@@ -18,7 +18,8 @@ class SqlUserRepository(IUserRepository):
             email=user_orm.email,
             password_hash=user_orm.hashed_password,
             is_active=user_orm.is_active,
-            role=user_orm.role
+            role=user_orm.role,
+            is_verified=user_orm.is_verified
         )
 
     async def create(self, user: User) -> User:
@@ -26,7 +27,8 @@ class SqlUserRepository(IUserRepository):
             email=user.email,
             hashed_password=user.password_hash,
             is_active=user.is_active,
-            role=user.role
+            role=user.role,
+            is_verified=user.is_verified
         )
         self.db.add(user_orm)
         await self.db.flush()
@@ -44,9 +46,20 @@ class SqlUserRepository(IUserRepository):
             email=user_orm.email,
             password_hash=user_orm.hashed_password,
             is_active=user_orm.is_active,
-            role=user_orm.role
+            role=user_orm.role,
+            is_verified=user_orm.is_verified
         )
 
     async def count(self) -> int:
         result = await self.db.execute(select(func.count()).select_from(UserORM))
         return result.scalar()
+
+    async def update(self, user: User) -> User:
+        stmt = select(UserORM).where(UserORM.id == user.id)
+        result = await self.db.execute(stmt)
+        user_orm = result.scalars().first()
+        if user_orm:
+            user_orm.is_verified = user.is_verified
+            user_orm.hashed_password = user.password_hash
+            await self.db.commit()
+        return user

@@ -2,6 +2,7 @@ from contextlib import asynccontextmanager
 import sys
 from fastapi import FastAPI
 from loguru import logger
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.api import pizzas, orders, auth
 from app.core.configs import settings
@@ -13,6 +14,7 @@ logger.add(
     level="INFO",
 )
 
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info("Application started")
@@ -23,6 +25,18 @@ app = FastAPI(
     version="1.0.0",
     description="API for Pizza Delivery app",
     lifespan=lifespan,
+)
+origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origin_regex=".*",
+    allow_credentials=True,
+    allow_methods=["*"], # Разрешаем все методы (GET, POST, OPTIONS и т.д.)
+    allow_headers=["*"], # Разрешаем все заголовки
 )
 
 app.include_router(auth.router, prefix="/auth", tags=["Auth"])

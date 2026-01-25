@@ -20,3 +20,18 @@ export const getMe = async (): Promise<User> => {
   const response = await api.get<User>('/auth/me');
   return response.data;
 };
+
+export const changePassword = async (oldPassword: string, newPassword: string): Promise<void> => {
+  await api.post('/auth/change-password', {
+    old_password: oldPassword,
+    new_password: newPassword,
+  });
+};
+
+export const forgotPassword = async (email: string): Promise<void> => {
+  await api.post('/auth/forgot-password', { email });
+};
+
+export const resetPassword = async (token: string, newPassword: string): Promise<void> => {
+  await api.post('/auth/reset-password', { token, new_password: newPassword });
+};

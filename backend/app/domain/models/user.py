@@ -7,3 +7,4 @@ class User:
     id: int | None = None
     is_active: bool = True
     role: str = "employee"
+    is_verified: bool = False

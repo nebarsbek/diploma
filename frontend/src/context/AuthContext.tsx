@@ -28,7 +28,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const register = async (email: string, password: string) => {
     await apiRegister(email, password);
-    await login(email, password);
   };
 
   const logout = () => {

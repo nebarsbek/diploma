@@ -29,7 +29,10 @@ export const Login = () => {
             <input type="email" required className="w-full p-2 border rounded" value={email} onChange={e => setEmail(e.target.value)} />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+            <div className="flex justify-between items-center mb-1">
+              <label className="block text-sm font-medium text-gray-700">Password</label>
+              <Link to="/forgot-password" className="text-xs text-primary hover:underline">Forgot Password?</Link>
+            </div>
             <input type="password" required className="w-full p-2 border rounded" value={password} onChange={e => setPassword(e.target.value)} />
           </div>
           <button type="submit" className="w-full bg-primary text-white py-2 rounded font-bold hover:bg-orange-700">

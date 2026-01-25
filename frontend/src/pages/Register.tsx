@@ -12,7 +12,8 @@ export const Register = () => {
     e.preventDefault();
     try {
       await register(email, password);
-      navigate('/');
+       alert('Registration successful! Please check your email to verify your account.');
+      navigate('/login');
     } catch (error) {
       alert('Registration failed');
       console.log(error);

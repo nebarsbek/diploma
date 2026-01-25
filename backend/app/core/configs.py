@@ -31,10 +31,6 @@ class DatabaseSettings(BaseSettings):
         return url
 
 
-class RedisSettings(BaseSettings):
-    ...
-
-
 class SQLAlchemySettings(BaseSettings):
     ALCHEMY_ECHO: bool = False
     ALCHEMY_ECHO_POOL: bool = False
@@ -48,6 +44,11 @@ class JWTSettings(BaseSettings):
     JWT_SECRET_KEY: str
     JWT_ALGORITHM: str = "HS256"
     JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
+
+
+class RedisSettings(BaseSettings):
+    REDIS_HOST: str = "localhost"
+    REDIS_PORT: int = 6379
 
 
 class Settings(BaseSettings):

@@ -39,3 +39,4 @@ class UserORM(Base):
     hashed_password = Column(String, nullable=False)
     is_active = Column(Boolean, default=True)
     role = Column(String, default="employee", nullable=False, server_default="'employee'")
+    is_verified = Column(Boolean, default=False)
