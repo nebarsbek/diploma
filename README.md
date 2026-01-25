@@ -50,7 +50,7 @@ Before starting, make sure you have installed:
 2.  Navigate to the folder where you want to save the project and run the command:
     ```bash
     git clone <link-to-your-repository>
-    cd diploma2026
+    cd diploma
     ```
 
 ### Step 3: Configure Environment Variables (.env)
