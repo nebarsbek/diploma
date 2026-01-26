@@ -1,0 +1,202 @@
+diploma2026
+│   backend
+│   ├── alembic
+│   │   ├── __pycache__
+│   │   │   ├── env.cpython-312.pyc
+│   │   │   └── env.cpython-313.pyc
+│   │   ├── versions
+│   │   │   ├── __pycache__
+│   │   │   │   ├── 166bab066878_user_changes.cpython-313.pyc
+│   │   │   │   ├── 3a429e11c047_order_model_change.cpython-313.pyc
+│   │   │   │   ├── 3a887bbf3de1_order_model_change.cpython-313.pyc
+│   │   │   │   ├── 5e3617e3e356_initial_migration.cpython-313.pyc
+│   │   │   │   ├── 6243e427c6a6_added_status_to_orders.cpython-313.pyc
+│   │   │   │   ├── 8a9dda35783d_orders_create_modification.cpython-313.pyc
+│   │   │   │   ├── b0034694f38c_add_users_table.cpython-313.pyc
+│   │   │   │   └── daa6923a49ad_pizza_model_changes.cpython-313.pyc
+│   │   │   ├── 166bab066878_user_changes.py
+│   │   │   ├── 3a887bbf3de1_order_model_change.py
+│   │   │   ├── 5e3617e3e356_initial_migration.py
+│   │   │   ├── 6243e427c6a6_added_status_to_orders.py
+│   │   │   ├── 8a9dda35783d_orders_create_modification.py
+│   │   │   ├── b0034694f38c_add_users_table.py
+│   │   │   └── daa6923a49ad_pizza_model_changes.py
+│   │   ├── env.py
+│   │   ├── README
+│   │   └── script.py.mako
+│   ├── app
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── __init__.cpython-313.pyc
+│   │   │   └── main.cpython-313.pyc
+│   │   ├── api
+│   │   │   ├── __pycache__
+│   │   │   │   ├── auth.cpython-313.pyc
+│   │   │   │   ├── dependencies.cpython-313.pyc
+│   │   │   │   ├── orders.cpython-313.pyc
+│   │   │   │   └── pizzas.cpython-313.pyc
+│   │   │   ├── auth.py
+│   │   │   ├── dependencies.py
+│   │   │   ├── orders.py
+│   │   │   └── pizzas.py
+│   │   ├── application
+│   │   │   ├── orders
+│   │   │   │   ├── __pycache__
+│   │   │   │   │   ├── dto.cpython-313.pyc
+│   │   │   │   │   └── use_cases.cpython-313.pyc
+│   │   │   │   ├── dto.py
+│   │   │   │   └── use_cases.py
+│   │   │   ├── pizzas
+│   │   │   │   ├── __pycache__
+│   │   │   │   │   ├── dto.cpython-313.pyc
+│   │   │   │   │   └── use_cases.cpython-313.pyc
+│   │   │   │   ├── dto.py
+│   │   │   │   └── use_cases.py
+│   │   │   └── users
+│   │   │       ├── __pycache__
+│   │   │       │   ├── dto.cpython-313.pyc
+│   │   │       │   └── use_cases.cpython-313.pyc
+│   │   │       ├── dto.py
+│   │   │       └── use_cases.py
+│   │   ├── core
+│   │   │   ├── __pycache__
+│   │   │   │   ├── __init__.cpython-312.pyc
+│   │   │   │   ├── __init__.cpython-313.pyc
+│   │   │   │   ├── base_settings.cpython-312.pyc
+│   │   │   │   ├── base_settings.cpython-313.pyc
+│   │   │   │   ├── configs.cpython-312.pyc
+│   │   │   │   ├── configs.cpython-313.pyc
+│   │   │   │   ├── consts.cpython-312.pyc
+│   │   │   │   ├── consts.cpython-313.pyc
+│   │   │   │   ├── email.cpython-313.pyc
+│   │   │   │   ├── security.cpython-312.pyc
+│   │   │   │   └── security.cpython-313.pyc
+│   │   │   ├── __init__.py
+│   │   │   ├── base_settings.py
+│   │   │   ├── configs.py
+│   │   │   ├── consts.py
+│   │   │   ├── email.py
+│   │   │   └── security.py
+│   │   ├── domain
+│   │   │   ├── __pycache__
+│   │   │   │   └── __init__.cpython-313.pyc
+│   │   │   ├── abc_repositories
+│   │   │   │   ├── __pycache__
+│   │   │   │   │   ├── __init__.cpython-313.pyc
+│   │   │   │   │   ├── order_repository.cpython-313.pyc
+│   │   │   │   │   ├── pizza_repository.cpython-313.pyc
+│   │   │   │   │   └── user_repository.cpython-313.pyc
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── order_repository.py
+│   │   │   │   ├── pizza_repository.py
+│   │   │   │   └── user_repository.py
+│   │   │   ├── models
+│   │   │   │   ├── __pycache__
+│   │   │   │   │   ├── __init__.cpython-313.pyc
+│   │   │   │   │   ├── order.cpython-313.pyc
+│   │   │   │   │   ├── orderItem.cpython-313.pyc
+│   │   │   │   │   ├── pizza.cpython-313.pyc
+│   │   │   │   │   └── user.cpython-313.pyc
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── order.py
+│   │   │   │   ├── orderItem.py
+│   │   │   │   ├── pizza.py
+│   │   │   │   └── user.py
+│   │   │   ├── services
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── pricing.py
+│   │   │   └── __init__.py
+│   │   ├── errors
+│   │   │   └── __init__.py
+│   │   ├── infrastructure
+│   │   │   ├── __pycache__
+│   │   │   │   ├── __init__.cpython-312.pyc
+│   │   │   │   ├── __init__.cpython-313.pyc
+│   │   │   │   ├── database.cpython-312.pyc
+│   │   │   │   ├── database.cpython-313.pyc
+│   │   │   │   └── security.cpython-313.pyc
+│   │   │   ├── orm
+│   │   │   │   ├── __pycache__
+│   │   │   │   │   ├── __init__.cpython-313.pyc
+│   │   │   │   │   ├── models.cpython-313.pyc
+│   │   │   │   │   ├── order_repository.cpython-313.pyc
+│   │   │   │   │   ├── pizza_repository.cpython-313.pyc
+│   │   │   │   │   └── user_repository.cpython-313.pyc
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── models.py
+│   │   │   │   ├── order_repository.py
+│   │   │   │   ├── pizza_repository.py
+│   │   │   │   └── user_repository.py
+│   │   │   ├── __init__.py
+│   │   │   ├── database.py
+│   │   │   └── security.py
+│   │   ├── schemas
+│   │   │   ├── __init__.py
+│   │   │   ├── base_schema.py
+│   │   │   └── user_schemas.py
+│   │   ├── __init__.py
+│   │   └── main.py
+│   ├── test
+│   │   └── __init__.py
+│   ├── .env
+│   ├── .python-version
+│   ├── alembic.ini
+│   ├── docker-compose.yml
+│   ├── Dockerfile
+│   ├── pyproject.toml
+│   ├── README.md
+│   ├── requirements.txt
+│   frontend
+│   ├── public
+│   │   └── vite.svg
+│   ├── src
+│   │   ├── api
+│   │   │   ├── auth.ts
+│   │   │   ├── client.ts
+│   │   │   ├── orders.ts
+│   │   │   └── pizzas.ts
+│   │   ├── assets
+│   │   │   └── react.svg
+│   │   ├── components
+│   │   │   ├── CartSidebar.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   ├── Hero.tsx
+│   │   │   ├── Menu.tsx
+│   │   │   ├── Navbar.tsx
+│   │   │   ├── ProductCard.tsx
+│   │   │   └── ProtectedRoute.tsx
+│   │   ├── context
+│   │   │   ├── AuthContext.tsx
+│   │   │   ├── CartContext.tsx
+│   │   │   └── useAuth.tsx
+│   │   ├── pages
+│   │   │   ├── Admin.tsx
+│   │   │   ├── ForgotPassword.tsx
+│   │   │   ├── Login.tsx
+│   │   │   ├── Profile.tsx
+│   │   │   ├── Register.tsx
+│   │   │   ├── ResetPassword.tsx
+│   │   │   └── VerifyEmail.tsx
+│   │   ├── App.tsx
+│   │   ├── index.css
+│   │   ├── main.tsx
+│   │   ├── settings.json
+│   │   └── types.ts
+│   ├── .gitignore
+│   ├── Dockerfile
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── nginx.conf
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── README.md
+│   ├── tailwind.config.js
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   └── vite.config.ts
+│   .gitignore
+│   architecture.txt
+│   docker-compose.yml
+│   README.md
