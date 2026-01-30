@@ -23,17 +23,16 @@ services:
     # Включаем --reload и запускаем миграции при старте
     command: sh -c "uv run alembic upgrade head && exec uv run uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
     volumes:
-      - ./backend:/app       # Пробрасываем код с хоста в контейнер
-      - /app/.venv           # Сохраняем виртуальное окружение контейнера (чтобы не затерлось файлами с Windows)
+      - ./backend:/app       
+      - /app/.venv
     ports:
-      - "8000:8000" # Пробрасываем порт, чтобы фронтенд мог слать запросы на localhost:8000
+      - "8000:8000"
     depends_on:
       db:
         condition: service_healthy
     env_file:
-      - ./backend/.env # Подключаем ваш .env файл с настройками почты
+      - ./backend/.env
     environment:
-      # Переопределяем настройки БД для работы внутри Docker сети
       POSTGRES_HOST: db
       POSTGRES_PORT: 5432
       POSTGRES_USER: admin
