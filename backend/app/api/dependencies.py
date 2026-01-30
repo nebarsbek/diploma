@@ -1,4 +1,4 @@
-import jwt #type:ignore 
+from jose import jwt, JWTError #type:ignore 
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -40,7 +40,7 @@ async def get_current_user(
         user_id: str = payload.get("sub")
         if user_id is None:
             raise credentials_exception
-    except jwt.PyJWTError:
+    except JWTError:
         raise credentials_exception
 
     repo = SqlUserRepository(db)

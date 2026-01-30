@@ -71,3 +71,32 @@ class SqlPizzaRepository(IPizzaRepository):
                 image_url=p.image_url
             ) for p in orm_pizzas
         ]
+
+    async def update(self, pizza: Pizza) -> Pizza | None:
+        stmt = select(PizzaORM).where(PizzaORM.id == pizza.id)
+        result = await self.db.execute(stmt)
+        orm_pizza = result.scalars().first()
+
+        if orm_pizza:
+            orm_pizza.name = pizza.name
+            orm_pizza.price = pizza.price
+            orm_pizza.description = pizza.description
+            orm_pizza.category = pizza.category
+            orm_pizza.image_url = pizza.image_url
+            
+            await self.db.commit()
+            await self.db.refresh(orm_pizza)
+            
+            # Возвращаем обновленный объект (можно мапить заново, но поля те же)
+            return pizza
+        return None
+
+    async def delete(self, pizza_id: int) -> bool:
+        stmt = select(PizzaORM).where(PizzaORM.id == pizza_id)
+        result = await self.db.execute(stmt)
+        orm_pizza = result.scalars().first()
+        if orm_pizza:
+            await self.db.delete(orm_pizza)
+            await self.db.commit()
+            return True
+        return False

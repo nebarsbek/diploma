@@ -1,10 +1,14 @@
-from fastapi import APIRouter, Depends
+from decimal import Decimal
+from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel
 from app.infrastructure.database import get_db
 from app.infrastructure.orm.pizza_repository import SqlPizzaRepository
-from app.application.pizzas.use_cases import GetPizzasUseCase, CreatePizzaUseCase, SearchPizzasUseCase
-from app.application.pizzas.dto import PizzaOut, CreatePizzaIn
+from app.application.pizzas.use_cases import GetPizzasUseCase, CreatePizzaUseCase, SearchPizzasUseCase, UpdatePizzaUseCase, DeletePizzaUseCase
+from app.application.pizzas.dto import PizzaOut, CreatePizzaIn, UpdatePizzaIn
 
 router = APIRouter()
+
+
 
 def get_pizzas_use_case(db=Depends(get_db)) -> GetPizzasUseCase:
     return GetPizzasUseCase(SqlPizzaRepository(db))
@@ -14,6 +18,12 @@ def get_create_pizza_use_case(db=Depends(get_db)) -> CreatePizzaUseCase:
 
 def get_search_pizzas_use_case(db=Depends(get_db)) -> SearchPizzasUseCase:
     return SearchPizzasUseCase(SqlPizzaRepository(db))
+
+def get_update_pizza_use_case(db=Depends(get_db)) -> UpdatePizzaUseCase:
+    return UpdatePizzaUseCase(SqlPizzaRepository(db))
+
+def get_delete_pizza_use_case(db=Depends(get_db)) -> DeletePizzaUseCase:
+    return DeletePizzaUseCase(SqlPizzaRepository(db))
 
 @router.get("/", response_model=list[PizzaOut])
 async def get_pizzas(
@@ -47,3 +57,24 @@ async def search_pizzas(
     Поиск пицц по названию.
     """
     return await uc.execute(query)
+
+@router.put("/{pizza_id}", response_model=PizzaOut)
+async def update_pizza(
+    pizza_id: int,
+    data: UpdatePizzaIn,
+    uc: UpdatePizzaUseCase = Depends(get_update_pizza_use_case)
+):
+    """
+    Обновить данные пиццы (частичное обновление).
+    """
+    return await uc.execute(pizza_id, data)
+
+@router.delete("/{pizza_id}")
+async def delete_pizza(
+    pizza_id: int,
+    uc: DeletePizzaUseCase = Depends(get_delete_pizza_use_case)
+):
+    """
+    Удалить пиццу.
+    """
+    return await uc.execute(pizza_id)
