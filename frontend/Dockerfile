@@ -1,18 +1,12 @@
-FROM node:20-alpine as build
+FROM node:20-alpine
 
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci
+RUN npm install
 
 COPY . .
-RUN npm run build
 
-# Stage 2: Раздача через Nginx
-FROM nginx:alpine
-
-COPY --from=build /app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 5173
+# Запускаем dev-сервер с флагом --host, чтобы он был доступен снаружи контейнера
+CMD ["npm", "run", "dev", "--", "--host"]

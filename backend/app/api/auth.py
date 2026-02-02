@@ -11,7 +11,7 @@ from app.api.dependencies import get_current_user_optional, get_current_user
 from app.core.configs import settings
 from app.core.email import send_verification_email, send_reset_password_email
 from app.infrastructure.security import get_password_hash, verify_password
-import jwt # type: ignore
+from jose import jwt, JWTError # type: ignore
 
 router = APIRouter()
 
@@ -114,7 +114,7 @@ async def verify_email(token: str, db = Depends(get_db)):
         user = User(email=email, password_hash=password_hash, role=role, is_verified=True)
         await repo.create(user)
         return {"message": "Email verified and user created"}
-    except jwt.PyJWTError:
+    except JWTError:
         raise HTTPException(status_code=400, detail="Invalid token")
 
 @router.post("/change-password")
@@ -181,7 +181,7 @@ async def reset_password(
         
         return {"message": "Password reset successfully"}
         
-    except jwt.PyJWTError:
+    except JWTError:
         raise HTTPException(status_code=400, detail="Invalid token")
 
 @router.post("/login", response_model=Token)
